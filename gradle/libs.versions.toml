@@ -4,6 +4,7 @@ ksp = "2.0.10-1.0.24"
 
 [libraries]
 kotlin_stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin_reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin_gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 google_ksp_api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 

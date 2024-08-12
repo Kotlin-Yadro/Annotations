@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 include(":annotation")
 include(":processor")
 include("codegen")
+include("reflection")
