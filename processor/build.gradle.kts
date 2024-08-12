@@ -13,7 +13,13 @@ sourceSets.main {
     java.srcDirs("src/main/kotlin")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 dependencies {
     implementation(project(":annotation"))
     implementation(libs.google.ksp.api)
+    implementation(libs.kotlinpoet)
 }
