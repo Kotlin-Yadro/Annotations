@@ -1,11 +1,11 @@
 package ru.otus.processor
 
+import com.google.devtools.ksp.getDeclaredProperties
 import com.google.devtools.ksp.processing.*
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSVisitorVoid
 import com.google.devtools.ksp.validate
-import com.squareup.kotlinpoet.ksp.toClassName
 import ru.otus.annotation.PrintableClass
 
 class PrintableClassProcessor(
@@ -31,7 +31,13 @@ class PrintableClassProcessor(
 
     inner class PrintableClassVisitor : KSVisitorVoid() {
         override fun visitClassDeclaration(classDeclaration: KSClassDeclaration, data: Unit) {
-            logger.warn("Visiting declaration: ${classDeclaration.toClassName()}")
+            val packageName = classDeclaration.packageName.asString()
+            val className = classDeclaration.simpleName.asString()
+            val properties = classDeclaration.getDeclaredProperties()
+            logger.warn("Working with class: $packageName.$className")
+            properties.forEach { property ->
+                logger.warn("==> Property found: ${property.simpleName.asString()} (${property.type})")
+            }
         }
     }
 }
